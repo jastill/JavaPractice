@@ -21,13 +21,14 @@ public class Quiz
 		 
 		 x = -98;
 		 out.println(x);
-		byte b = 24;
+		
+		 byte b = 24;
 		out.println(b);
 		
 		char c = 97;
 		out.println(c);
 
-		double d = 9.9;
+		double d = 5.5;
 		out.println(d);
 		
 		d = 5.2;
@@ -57,7 +58,7 @@ public class Quiz
 		b = (byte)x;
 		out.println(b);
 		
-		w = 'A' + 2.0;
+		w = 'A' * 2.0;
 		out.println(w);
 
 		/*
@@ -71,13 +72,18 @@ public class Quiz
 		d = 3.2e2;
 		out.println(d);
 		
-		/*
-		 * s = c; out.println(u);
-		 */		
+		boolean h = true;
+		out.println(h);
 		
 		/*
-		 * z = w; out.println(u);
-		 */
+		 * s = c; out.println(u);
+		 * Can't do short and long
+		 */		
+		
+		
+		 z = (int)w;
+		 out.println(z);
+		 
 
 		
 	}
