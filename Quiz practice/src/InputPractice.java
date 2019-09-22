@@ -13,7 +13,7 @@ public class InputPractice {
 		intOne = keyboard.nextInt();
 		System.out.println(intOne);
 		
-		System.out.println("Enter a double : ");
+	/*	System.out.println("Enter a double : ");
 		doubleOne = keyboard.nextDouble();
 		System.out.println(doubleOne);
 		
@@ -24,7 +24,7 @@ public class InputPractice {
 		System.out.println("Enter a byte : ");
 		byteOne = keyboard.nextByte();
 		System.out.println(byteOne);
-		
+		*/
 		keyboard.close();
 	}
 
