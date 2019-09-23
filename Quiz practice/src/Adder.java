@@ -20,5 +20,4 @@ public class Adder
 		System.out.println(numOne + " + " + numTwo + " = " + answer);
 	}
 	
-	
 }
