@@ -16,19 +16,21 @@ import java.util.Scanner;
  */
 public class HockeyInvoiceTracker {
 	
-	private Invoice invoices[] = new Invoice[500];
+	// This is where the instance variables are.
+	// The invoices are stored in an Array. This may want to be replaced
+	// by a Map or Dictionary.
+	private Invoice invoices[];
 
 	/**
-	 * 
+	 * This is the default Constructor. It loads the existing invoices.
 	 */
 	public HockeyInvoiceTracker() {
-		// TODO Load Invoices from file
-		
 		loadInvoices();
 	}
 
 	/**
-	 * 
+	 * This method is used to list the invoices on the terminal.
+	 * It should loop through each of the Invoices and print the details.
 	 */
 	private void showInvoices() {
 		for (int i=0; i<invoices.length; i++) {
@@ -39,14 +41,23 @@ public class HockeyInvoiceTracker {
 			}
 		}
 	}
+
+	/**
+	 * Show the menu
+	 */
+	private void showMenu() {
+		// TODO: Add the code here that shows the menu and 
+	}
 	
 	/**
-	 * 
+	 * This method is used to run in a loop looking for input from the user.
+	 * The method should validate the commands and execute the valid ones.
 	 */
 	public void run() {
 		// Entry point for the project. This is where everything starts
 		Scanner keyboard = new Scanner (System.in);
 		
+		// Show the menu
 		System.out.println("Welcome to TJs Hockey Invoice Tracker");
 		System.out.println("Select a number to continue:");
 		System.out.println("[1] Show Invoices");
@@ -65,6 +76,7 @@ public class HockeyInvoiceTracker {
 					this.showInvoices();
 				} else if (selection == 2) {
 					// TODO
+					// TJ to add this
 				} else if (selection == 3) {
 					saveInvoices();
 				} else if (selection == 4) {
@@ -81,6 +93,7 @@ public class HockeyInvoiceTracker {
 	}
 	
 	/**
+	 * Main method for the application
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -89,7 +102,7 @@ public class HockeyInvoiceTracker {
 	}
 	
 	/**
-	 * 
+	 * Load the invoices file if it exists.
 	 */
 	private Boolean loadInvoices() {
 		String filename = "HockeyInvoices.dat";
@@ -101,11 +114,15 @@ public class HockeyInvoiceTracker {
 			fis = new FileInputStream(filename);
 	        in = new ObjectInputStream(fis);
 	        
-	        // Write the length as the first item
+			// Read the length as the first item
+			// This lets us know how many invoices to load
 	        Integer length = (Integer) in.readObject();
-	        
-	        invoices = new Invoice[length + 5];
-	        
+			
+			// Create an array for the invoices that is big enough for the number
+			// of invoices
+	        invoices = new Invoice[length];
+			
+			// Read each invoice from the file and add it to the array
 			for (int i = 0; i < length; i++) {
 				Invoice invoice = (Invoice)in.readObject();
 				invoices[i] = invoice;
@@ -134,10 +151,14 @@ public class HockeyInvoiceTracker {
 			fos = new FileOutputStream(filename);
 	        out = new ObjectOutputStream(fos);
 	        
-	        // Write the length as the first item
+			// Write the length as the first item
+			// This is so that when we open the file again, we know
+			// how many invoices to load.
 	        Integer length = invoices.length;
 	        
-	        out.writeObject(length);
+			out.writeObject(length);
+			
+			// Now write each valid invoice to the file
 			for (int i = 0; i < invoices.length; i++) {
 				Invoice invoice = invoices[i];
 				if (invoice != null) {
@@ -157,11 +178,10 @@ public class HockeyInvoiceTracker {
 	}
 	
 	/**
-	 * 
+	 * Validate the selection made by the user.
 	 */
 	private Boolean isValidSelection(int selection) {
 		// TJ TODO 
 		return true;
 	}
-	
 }
